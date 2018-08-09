@@ -11,6 +11,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/js/swiper.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue-swiper@0.5.0/dist/vue-swiper.min.js"></script>
 	
 </head>
 <body>
@@ -55,10 +56,11 @@
 				<p>專屬迷你咖啡師</p>
 				<p>輕巧機身，11種飲品一鍵可得</p>
 				<div class="pd_certification">
-					<img src="images/pdinfo/hd8927/pd_info_logo1.jpg" alt="">
+					<!-- <img src="images/pdinfo/hd8927/pd_info_logo1.jpg" alt="">
 					<img src="images/pdinfo/hd8927/pd_info_logo2.jpg" alt="">
 					<img src="images/pdinfo/hd8927/pd_info_logo3.jpg" alt="">
-					<img src="images/pdinfo/hd8927/pd_info_logo4.jpg" alt="">
+					<img src="images/pdinfo/hd8927/pd_info_logo4.jpg" alt=""> -->
+					<img v-for="(item, index) in product_brand" :key="index" v-bind:src="'images/pdinfo/'+product_name+'/' + item+'.jpg'"  >
 					
 				</div>
 			</div>
@@ -126,6 +128,7 @@ var app = new Vue({
 	  el: '.main',
 	  data: {
 	    product_name: 'hd8927',
+		product_brand: ['pd_info_logo1','pd_info_logo2','pd_info_logo3','pd_info_logo4'],
 		piclist:[{name:'pd_grally01',active:true,pic_name:'pd_pic1'},{name:'pd_grally02',active:false,pic_name:'pd_pic2'},
                 {name:'pd_grally03',active:false,pic_name:'pd_pic3'}, {name:'pd_grally04',active:false,pic_name:'pd_pic4'}]
 	  },

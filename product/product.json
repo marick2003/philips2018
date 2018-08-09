@@ -6,49 +6,56 @@
       "brand" : "HD8927",
       "description" : "專屬迷你咖啡師",
       "pic" : "pd_pic1.png" ,
-      "url" : "#"
+      "url" : "#",
+      "list_url" : "#"
     },
     {
       "name" : "Pico Baristo",
       "brand" : "HD8927",
       "description" : "專屬迷你咖啡師",
       "pic" : "pd_pic1.png" ,
-      "url" : "#"
+      "url" : "#",
+      "list_url" : "#"
     },
     {
       "name" : "Pico Baristo",
       "brand" : "HD8927",
       "description" : "專屬迷你咖啡師",
       "pic" : "pd_pic1.png" ,
-      "url" : "#"
+      "url" : "#",
+      "list_url" : "#"
     },
     {
       "name" : "Pico Baristo",
       "brand" : "HD8927",
       "description" : "專屬迷你咖啡師",
       "pic" : "pd_pic1.png" ,
-      "url" : "#"
+      "url" : "#",
+      "list_url" : "#"
     },
     {
       "name" : "Pico Baristo",
       "brand" : "HD8927",
       "description" : "專屬迷你咖啡師",
       "pic" : "pd_pic1.png" ,
-      "url" : "#"
+      "url" : "#",
+      "list_url" : "#"
     },
     {
       "name" : "Pico Baristo",
       "brand" : "HD8927",
       "description" : "專屬迷你咖啡師",
       "pic" : "pd_pic1.png" ,
-      "url" : "#"
+      "url" : "#",
+      "list_url" : "#"
     },
     {
       "name" : "Pico Baristo",
       "brand" : "HD8927",
       "description" : "專屬迷你咖啡師",
       "pic" : "pd_pic1.png" ,
-      "url" : "#"
+      "url" : "#",
+      "list_url" : "#"
     }
   ],
   "filtercoffee" : [
@@ -57,14 +64,16 @@
       "brand" : "HD8927",
       "description" : "專屬迷你咖啡師",
       "pic" : "pd_pic1.png" ,
-      "url" : "#"
+      "url" : "#",
+      "list_url" : "#"
     },
     {
       "name" : "Pico Baristo",
       "brand" : "HD8927",
       "description" : "專屬迷你咖啡師",
       "pic" : "pd_pic1.png" ,
-      "url" : "#"
+      "url" : "#",
+      "list_url" : "#"
     }
   ]
 
