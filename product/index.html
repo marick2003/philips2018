@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="./css/reset.css">
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+    <div class="main">
+    	<div class="Kv fixed-background">
+    		
+    	</div>
+    	<div class="Nav center">
+    		<ul>
+    			<li><p class="text">Saeco 全自動義式咖啡機</p></li>
+    			<li><p class="text">Saeco 濾煮式咖啡機</p></li>
+    			<li><p class="text">尋找命定咖啡機</p></li>
+    		</ul>
+    	</div>
+    	<div class="container center autocoffee">
+    	    <div class="title">
+    	    	<h1>Saeco 全自動義式咖啡機</h1>
+	    		<p class="text">輕觸按鈕，即刻現磨咖啡豆，調製出一杯又一杯新鮮沖煮的咖啡。</p>
+	    		<p class="text">盡情享用義式濃縮咖啡、卡布奇諾、拿鐵或瑪奇朵，還可搭配內建奶泡功能現打的新鮮奶泡。並可依您的喜好逐步選擇沖煮方式。</p>
+    	    </div>
+    		<div class="product-list">
+    			<!-- <div class="pd-item">
+    				<div class="pic">
+    					<img src="./images/pd_pic1.png">
+    				</div>
+    				<div class="description">
+    					<p>Pico Baristo</p>
+    					<p>HD8927</p>
+    					<p>專屬迷你咖啡師</p>
+    				</div>
+    				<div class="btn">
+    					<ul>
+    						<li><p>詳細規格</p></li>
+    						<li><p>產品特色</p></li>
+    					</ul>
+    				</div>
+    			</div> -->
+				<pd-item  v-for="(item, index) in auto_array" :item="item" :pdstyle="'auto'" :key="index"></pd-item>
+    		
+    		</div>
+    	</div>
+
+    	<div class="container center filtercoffee">
+    	    <div class="title">
+    	    	<h1>Saeco 濾煮式咖啡機</h1>
+	    		<p class="text">完美萃取原豆風味，以近乎完美手沖口感為初衷所設計的咖啡機，滿足你挑剔的味蕾。</p>
+	    		
+    	    </div>
+    		<div class="product-list">
+    			<pd-item  v-for="(item, index) in filter_array" :item="item" :pdstyle="'filter'" :key="index"></pd-item>
+
+    		</div>
+    	</div>
+
+    </div>
+</body>
+
+<script type="text/x-template" id="pd-item">
+	<div class="pd-item">
+		<div class="pic">
+			
+			<img v-bind:src="'./images/' + item.pic" /> 
+		</div>
+		<div class="description">
+			<p>{{ item.name }}</p>
+			<p>{{ item.brand }}</p>
+			<p>{{ item.description }}</p>
+		</div>
+		<div class="btn">
+			<ul>
+				<li v-if="pdstyle == 'auto'"><p>詳細規格</p></li>
+    		    <li v-bind:class="{ other: pdstyle == 'filter' }"><p><a v-bind:href="item.url">產品特色</a></p></li>
+			</ul>
+		</div>
+	</div>
+</script>
+
+
+<script type="text/javascript">
+
+	Vue.component('pd-item',{
+	props: ['item','pdstyle'],
+	template:"#pd-item",
+	
+	data: function(){
+		return {
+			data: this.item
+		}
+	},
+	created: function() {
+	
+	},
+	computed:{
+
+	},
+	methods:{
+			
+	}
+
+	});
+
+	var app = new Vue({
+	  el: '.main',
+	  data: {
+	  	auto_array: [],
+		filter_array: [] ,
+	    message: 'Hello Vue!'
+	  },
+	  created(){
+	  	console.log("start");
+
+		  var _this = this;
+	  	$.getJSON('product.json', function(data){
+			
+			console.log( data );
+			$.each( data.autocoffee, function( key, val ) {
+				_this.auto_array.push(val);
+			});
+			$.each( data.filtercoffee, function( key, val ) {
+				_this.filter_array.push(val);
+			});
+	  		// console.log( _this.auto_array[0].name +"::"+_this.filter_array );
+	  	});
+	  }
+	})
+</script>
+</html>
