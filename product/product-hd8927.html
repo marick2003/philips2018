@@ -28,20 +28,22 @@
 		<div class="pd_item center">
 			<div class="pd_grally">
 				<div class="pd_pic">
-					<img class="active" src="images/pdinfo/hd8927/pd_pic1.png" alt="">
+					<!-- <img class="active" src="images/pdinfo/hd8927/pd_pic1.png" alt="">
 					<img src="images/pdinfo/hd8927/pd_pic2.png" alt="">
 					<img src="images/pdinfo/hd8927/pd_pic3.png" alt="">
-					<img src="images/pdinfo/hd8927/pd_pic4.png" alt="">
+					<img src="images/pdinfo/hd8927/pd_pic4.png" alt=""> -->
+					<img v-for="(item, index) in piclist" :key="index" v-bind:src="'images/pdinfo/'+product_name+'/' + item.pic_name+'.png'" v-bind:class= "{active: item.active }"  >
 				</div>
 				<div class="pd_scale_btn change_btn">
 					<img src="images/pdinfo/scale_btn.jpg" alt="">
 					<img src="images/pdinfo/scale_btn_on.jpg" alt="">
 				</div>
-				<div class="pd_piclist">
-					<img class="active" src="images/pdinfo/hd8927/pd_grally01.jpg" alt="">
-					<img src="images/pdinfo/hd8927/pd_grally02.jpg" alt="">
-					<img src="images/pdinfo/hd8927/pd_grally03.jpg" alt="">
-					<img src="images/pdinfo/hd8927/pd_grally04.jpg" alt="">
+				<div class="pd_piclist"  >
+				   <img v-for="(item, index) in piclist" :key="index" v-bind:src="'images/pdinfo/'+product_name+'/' + item.name+'.jpg'" v-bind:class= "{active: item.active }" @click="toggleActiveClass(index)" >
+					<!-- <img  src="images/pdinfo/hd8927/pd_grally01.jpg" alt="" v-bind:class= "{active: piclist_isActive[0] === true }" @clic.stop.preventk="myFilter(0)" >
+					<img src="images/pdinfo/hd8927/pd_grally02.jpg" alt=""  v-bind:class="{ active: piclist_isActive[1] === true}" @click.stop.prevent="myFilter(1)" >
+					<img src="images/pdinfo/hd8927/pd_grally03.jpg" alt=""  v-bind:class="{ active: piclist_isActive[2] === true}" @click.stop.prevent="myFilter(2)">
+					<img src="images/pdinfo/hd8927/pd_grally04.jpg" alt=""  v-bind:class="{ active: piclist_isActive[3] === true}" @click.stop.prevent="myFilter(3)"> -->
 				</div>
 			</div>
 			<div class="pd_title">
@@ -57,6 +59,7 @@
 					<img src="images/pdinfo/hd8927/pd_info_logo2.jpg" alt="">
 					<img src="images/pdinfo/hd8927/pd_info_logo3.jpg" alt="">
 					<img src="images/pdinfo/hd8927/pd_info_logo4.jpg" alt="">
+					
 				</div>
 			</div>
 		</div>
@@ -119,6 +122,31 @@
 	</div>
 </body>
 <script>
-	
+var app = new Vue({
+	  el: '.main',
+	  data: {
+	    product_name: 'hd8927',
+		piclist:[{name:'pd_grally01',active:true,pic_name:'pd_pic1'},{name:'pd_grally02',active:false,pic_name:'pd_pic2'},
+                {name:'pd_grally03',active:false,pic_name:'pd_pic3'}, {name:'pd_grally04',active:false,pic_name:'pd_pic4'}]
+	  },
+	  methods:{
+		myFilter(n){
+			// console.log(this.piclist_isActive);
+
+			// this.piclist_isActive[n] = !this.piclist_isActive[n];
+
+		},
+		toggleActiveClass:function(index){
+		   for (let index = 0; index <this.piclist.length; index++) {
+			 this.piclist[index].active=false;
+		   }
+		  this.piclist[index].active=!this.piclist[index].active;
+		}
+
+	  },
+	  created(){
+	  	
+	  }
+	})	
 </script>
 </html>
