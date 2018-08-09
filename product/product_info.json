@@ -1,0 +1,71 @@
+{
+
+  "autocoffee" : [
+    {
+      "name" : "Pico Baristo",
+      "brand" : "HD8927",
+      "description" : "專屬迷你咖啡師",
+      "pic" : "pd_pic1.png" ,
+      "url" : "#"
+    },
+    {
+      "name" : "Pico Baristo",
+      "brand" : "HD8927",
+      "description" : "專屬迷你咖啡師",
+      "pic" : "pd_pic1.png" ,
+      "url" : "#"
+    },
+    {
+      "name" : "Pico Baristo",
+      "brand" : "HD8927",
+      "description" : "專屬迷你咖啡師",
+      "pic" : "pd_pic1.png" ,
+      "url" : "#"
+    },
+    {
+      "name" : "Pico Baristo",
+      "brand" : "HD8927",
+      "description" : "專屬迷你咖啡師",
+      "pic" : "pd_pic1.png" ,
+      "url" : "#"
+    },
+    {
+      "name" : "Pico Baristo",
+      "brand" : "HD8927",
+      "description" : "專屬迷你咖啡師",
+      "pic" : "pd_pic1.png" ,
+      "url" : "#"
+    },
+    {
+      "name" : "Pico Baristo",
+      "brand" : "HD8927",
+      "description" : "專屬迷你咖啡師",
+      "pic" : "pd_pic1.png" ,
+      "url" : "#"
+    },
+    {
+      "name" : "Pico Baristo",
+      "brand" : "HD8927",
+      "description" : "專屬迷你咖啡師",
+      "pic" : "pd_pic1.png" ,
+      "url" : "#"
+    }
+  ],
+  "filtercoffee" : [
+    {
+      "name" : "Pico Baristo",
+      "brand" : "HD8927",
+      "description" : "專屬迷你咖啡師",
+      "pic" : "pd_pic1.png" ,
+      "url" : "#"
+    },
+    {
+      "name" : "Pico Baristo",
+      "brand" : "HD8927",
+      "description" : "專屬迷你咖啡師",
+      "pic" : "pd_pic1.png" ,
+      "url" : "#"
+    }
+  ]
+
+}
