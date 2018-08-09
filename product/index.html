@@ -78,7 +78,7 @@
 		</div>
 		<div class="btn">
 			<ul>
-				<li v-if="pdstyle == 'auto'"><p>詳細規格</p></li>
+				<li v-if="pdstyle == 'auto'"><p><a v-bind:href="item.list_url">詳細規格</a></p></li>
     		    <li v-bind:class="{ other: pdstyle == 'filter' }"><p><a v-bind:href="item.url">產品特色</a></p></li>
 			</ul>
 		</div>
@@ -104,7 +104,7 @@
 
 	},
 	methods:{
-			
+
 	}
 
 	});
