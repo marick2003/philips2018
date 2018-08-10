@@ -148,6 +148,11 @@
 		</div>
 	</div>
 </body>
+
+
+
+
+
 <script>
 	
 var scrollY=0;
@@ -158,16 +163,10 @@ var app = new Vue({
 	  data: {
 	    product_name: 'hd8927',
 		product_brand: ['pd_info_logo1','pd_info_logo2','pd_info_logo3','pd_info_logo4'],
-		piclist:[{name:'pd_grally01',active:true,pic_name:'pd_pic1'},{name:'pd_grally02',active:false,pic_name:'pd_pic2'},
-                {name:'pd_grally03',active:false,pic_name:'pd_pic3'}, {name:'pd_grally04',active:false,pic_name:'pd_pic4'}],
+		piclist:[{name:'pd_grally01',active:true,pic_name:'pd_pic1',Bpic_name:'8927-1'},{name:'pd_grally02',active:false,pic_name:'pd_pic2',Bpic_name:'8927-2'},
+                {name:'pd_grally03',active:false,pic_name:'pd_pic3',Bpic_name:'8927-3'}, {name:'pd_grally04',active:false,pic_name:'pd_pic4',Bpic_name:'8927-4'}],
 	  },
 	  methods:{
-		myFilter(n){
-			// console.log(this.piclist_isActive);
-
-			// this.piclist_isActive[n] = !this.piclist_isActive[n];
-
-		},
 		toggleActiveClass:function(index){
 		   for (let index = 0; index <this.piclist.length; index++) {
 			 this.piclist[index].active=false;
@@ -177,11 +176,12 @@ var app = new Vue({
 		openSwiper: function(){
 			   var vm=this;
 				$("#popup").fadeIn(function(){
+					    //$("#popup .container").css("width",$('.swiper-slide img').eq(swiper.activeIndex).width()*1.5);
 					    swiper.update();
+						vm.chnageSwiper();
 						for (let index = 0; index <vm.piclist.length; index++) {
 							
 							if(vm.piclist[index].active){
-								
 								swiper.slideTo(index, 200);
 							}
 							
@@ -199,7 +199,13 @@ var app = new Vue({
 			$('.main').css({'position': 'relative', 'top': $(jQuery.browser.webkit ? 'body':'html').scrollTop() * -1});
 			$(jQuery.browser.webkit ? 'body':'html').scrollTop(scrollY);
 			});
+		},
+		chnageSwiper:function(){
+
+			$(".swiper-button-prev").css("left",($(window).width()/2-$('.swiper-slide img').eq(swiper.activeIndex).width()/2)-80);
+			$(".swiper-button-next").css("right",($(window).width()/2-$('.swiper-slide img').eq(swiper.activeIndex).width()/2)-80);
 		}
+		
 
 	  },
 	  created(){
@@ -209,23 +215,41 @@ var app = new Vue({
 				nextEl: '.swiper-button-next',
 				prevEl: '.swiper-button-prev',
 			},
-				slidesPerView: 'auto',
-				centeredSlides: true,
+			    // visibilityFullFit: true,
+			    // autoResize: 'auto', 
+				// slidesPerView: 'auto',
+				// centeredSlides: true,
 				on: {
 					init: function () {
 					/* do something */
-					console.log("12")
+					// console.log("12")
 					},
 					slideChange: function(){
-
-						console.log(swiper.activeIndex);
+					
 						
+						vm.chnageSwiper();
 						vm.toggleActiveClass(swiper.activeIndex);
 					}
 
 				}
 			});
+
+
+		$( window ).resize(function() {
+			if($(window).width()<=$('.swiper-slide img').eq(swiper.activeIndex).width()*1.5){
+   
+				$(".swiper-button-prev").css("left",10);
+			    $(".swiper-button-next").css("right",10);
+			}else{
+
+				vm.chnageSwiper();
+			}
+ 
+		});
 	  	
+	  },ready: function () {
+		var vm=this;
+
 	  }
 	})	
 </script>
