@@ -66,10 +66,7 @@
 				</div>
 				<div class="pd_piclist"  >
 				   <img v-for="(item, index) in piclist" :key="index" v-bind:src="'images/pdinfo/'+product_name+'/' + item.name+'.jpg'" v-bind:class= "{active: item.active }" @click="toggleActiveClass(index)" >
-					<!-- <img  src="images/pdinfo/hd8927/pd_grally01.jpg" alt="" v-bind:class= "{active: piclist_isActive[0] === true }" @clic.stop.preventk="myFilter(0)" >
-					<img src="images/pdinfo/hd8927/pd_grally02.jpg" alt=""  v-bind:class="{ active: piclist_isActive[1] === true}" @click.stop.prevent="myFilter(1)" >
-					<img src="images/pdinfo/hd8927/pd_grally03.jpg" alt=""  v-bind:class="{ active: piclist_isActive[2] === true}" @click.stop.prevent="myFilter(2)">
-					<img src="images/pdinfo/hd8927/pd_grally04.jpg" alt=""  v-bind:class="{ active: piclist_isActive[3] === true}" @click.stop.prevent="myFilter(3)"> -->
+					
 				</div>
 			</div>
 			<div class="pd_title">
@@ -81,10 +78,7 @@
 				<p>專屬迷你咖啡師</p>
 				<p>輕巧機身，11種飲品一鍵可得</p>
 				<div class="pd_certification">
-					<!-- <img src="images/pdinfo/hd8927/pd_info_logo1.jpg" alt="">
-					<img src="images/pdinfo/hd8927/pd_info_logo2.jpg" alt="">
-					<img src="images/pdinfo/hd8927/pd_info_logo3.jpg" alt="">
-					<img src="images/pdinfo/hd8927/pd_info_logo4.jpg" alt=""> -->
+					
 					<img v-for="(item, index) in product_brand" :key="index" v-bind:src="'images/pdinfo/'+product_name+'/' + item+'.jpg'"  >
 					
 				</div>
@@ -221,8 +215,7 @@ var app = new Vue({
 				// centeredSlides: true,
 				on: {
 					init: function () {
-					/* do something */
-					// console.log("12")
+			
 					},
 					slideChange: function(){
 					
@@ -235,7 +228,7 @@ var app = new Vue({
 			});
 
 
-		$( window ).resize(function() {
+		 $( window ).resize(function() {
 			if($(window).width()<=$('.swiper-slide img').eq(swiper.activeIndex).width()*1.2){
    
 				$(".swiper-button-prev").css("left",10);
