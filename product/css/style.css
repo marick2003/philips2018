@@ -25,6 +25,10 @@ h1{
 	color: #434343;
 	margin-bottom: 30px;
 }
+.main{
+
+  width: 100%;
+}
 .fixed-background{
     position: relative;
     width: 100%;

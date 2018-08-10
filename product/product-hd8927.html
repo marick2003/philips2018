@@ -8,16 +8,14 @@
 	<link rel="stylesheet" type="text/css" href="./css/reset.css">
 	<link rel="stylesheet" type="text/css" href="./css/style.css">
 	<link rel="stylesheet" type="text/css" href="./css/pr_info.css">
-	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/css/swiper.css">
 	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+	<script type="text/javascript" src="js/jquery.browser.js" ></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/js/swiper.js"></script>
+	
 
-	<!-- Include stylesheet -->
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/css/swiper.min.css" rel="stylesheet">
-	<!-- Include the Swiper library -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/js/swiper.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
-	<!-- Swiper JS Vue -->
-	<script src="https://cdn.jsdelivr.net/npm/vue-awesome-swiper@3.1.2/dist/vue-awesome-swiper.js"></script>
+	
 	
 </head>
 <body>
@@ -27,7 +25,28 @@
 		</div>
 		<div class='center container'>
 			
-			<div class="btn-close"><div class="hover-state"></div></div>
+					<!-- Swiper -->
+				    <div class="swiper-container">
+						<div class="swiper-wrapper">
+						<div class="swiper-slide">
+						    <img class="active" src="images/pdinfo/hd8927/8927-1.jpg" alt="">
+						</div>
+						<div class="swiper-slide">
+						    <img class="active" src="images/pdinfo/hd8927/8927-2.jpg" alt="">
+						</div>
+						<div class="swiper-slide">
+							<img class="active" src="images/pdinfo/hd8927/8927-3.jpg" alt="">
+						</div>
+						<div class="swiper-slide">
+							<img class="active" src="images/pdinfo/hd8927/8927-4.jpg" alt="">
+						</div>
+					
+						</div>
+					
+					</div>
+					<!-- Add Arrows -->
+					<div class="swiper-button-next"></div>
+					<div class="swiper-button-prev"></div>
 		</div>
 				
 	</div>
@@ -41,7 +60,7 @@
 					<img src="images/pdinfo/hd8927/pd_pic4.png" alt=""> -->
 					<img v-for="(item, index) in piclist" :key="index" v-bind:src="'images/pdinfo/'+product_name+'/' + item.pic_name+'.png'" v-bind:class= "{active: item.active }"  >
 				</div>
-				<div class="pd_scale_btn change_btn">
+				<div class="pd_scale_btn change_btn" @click="openSwiper">
 					<img src="images/pdinfo/scale_btn.jpg" alt="">
 					<img src="images/pdinfo/scale_btn_on.jpg" alt="">
 				</div>
@@ -130,13 +149,17 @@
 	</div>
 </body>
 <script>
+	
+var scrollY=0;
+var swiper;
 var app = new Vue({
 	  el: '.main',
+	  
 	  data: {
 	    product_name: 'hd8927',
 		product_brand: ['pd_info_logo1','pd_info_logo2','pd_info_logo3','pd_info_logo4'],
 		piclist:[{name:'pd_grally01',active:true,pic_name:'pd_pic1'},{name:'pd_grally02',active:false,pic_name:'pd_pic2'},
-                {name:'pd_grally03',active:false,pic_name:'pd_pic3'}, {name:'pd_grally04',active:false,pic_name:'pd_pic4'}]
+                {name:'pd_grally03',active:false,pic_name:'pd_pic3'}, {name:'pd_grally04',active:false,pic_name:'pd_pic4'}],
 	  },
 	  methods:{
 		myFilter(n){
@@ -152,12 +175,56 @@ var app = new Vue({
 		  this.piclist[index].active=!this.piclist[index].active;
 		},
 		openSwiper: function(){
-
+			   var vm=this;
+				$("#popup").fadeIn(function(){
+					    swiper.update();
+						for (let index = 0; index <vm.piclist.length; index++) {
+							
+							if(vm.piclist[index].active){
+								
+								swiper.slideTo(index, 200);
+							}
+							
+						}
+						
+					    scrollY=$(window).scrollTop();
+						console.log(scrollY);
+						$('.main').css({'position': 'fixed', 'top': $(jQuery.browser.webkit ? 'body':'html').scrollTop() * -1});
+						$(jQuery.browser.webkit ? 'body':'html').scrollTop(scrollY);
+				});
+		},
+		closeSwiper:function(){
 			
+			$("#popup").fadeOut(function(){
+			$('.main').css({'position': 'relative', 'top': $(jQuery.browser.webkit ? 'body':'html').scrollTop() * -1});
+			$(jQuery.browser.webkit ? 'body':'html').scrollTop(scrollY);
+			});
 		}
 
 	  },
 	  created(){
+		    var vm=this;
+			swiper = new Swiper('.swiper-container', {
+			navigation: {
+				nextEl: '.swiper-button-next',
+				prevEl: '.swiper-button-prev',
+			},
+				// slidesPerView: 'auto',
+				centeredSlides: true,
+				on: {
+					init: function () {
+					/* do something */
+					console.log("12")
+					},
+					slideChange: function(){
+
+						console.log(swiper.activeIndex);
+						
+						vm.toggleActiveClass(swiper.activeIndex);
+					}
+
+				}
+			});
 	  	
 	  }
 	})	
