@@ -8,7 +8,7 @@ a{
 }
 p{
 	font-family: 'Noto Sans TC';
-	font-size: 1rem;
+	font-size: 0.875rem;
 	font-weight: 400;
 }
 .text{
@@ -72,7 +72,7 @@ img{
   }
   .Nav ul li p{
     font-size: 1rem;
-    line-height: 35px;
+    line-height: 49px;
   }
   .Nav ul li:hover{
   
@@ -83,7 +83,7 @@ img{
     content: "";
     width: 7px;
     height: 10px;
-    margin: 7px 10px;
+    margin: 20px 10px;
     background-image: url("../images/arrow.png");
     background-position: top center;
     background-repeat: no-repeat;
@@ -101,4 +101,86 @@ img{
     width: 94%;
     text-align: center;
     margin: 0 auto;
+  }
+
+  .product-list{
+  
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 50px 0px;
+    justify-items: center;
+    margin-top: 70px;
+  }
+  .pd-item{
+    width: 90%;
+   
+  }
+  .pd-item .pic{
+    width: 50%;
+    margin: 0 auto;
+  }
+  .pd-item .description {
+
+    width: 80%;
+    margin: 0 auto;
+  }
+  .pd-item .pic ,.pd-item .description{
+    text-align: center;
+  }
+  .pd-item .description p{
+    color: #808080;
+    line-height: 20px;
+  }
+  .pd-item .description p+p{
+    color: #000000;
+  }
+  .pd-item .description p+p+p{
+    color: #9f734f;
+  }
+  .pd-item .btn{
+    margin-top: 10px;
+  }
+  .pd-item .btn ul li{
+    float: left;
+    width: 40%;
+    height: 40px;
+    text-align: center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color: #ffffff;
+    background-color: #1a1a1a;
+    cursor: pointer;
+    margin-left: 20px;
+  /*  left: 50%;
+    margin-left: 70px;*/
+    transition: background-color 0.2s linear;	
+  }
+  .pd-item .btn ul li:hover{
+  
+    background-color: #9f734f;
+  }
+  .pd-item .btn ul li::after {
+    position: absolute;
+    content: "";
+    width: 7px;
+    height: 10px;
+    margin: 2px 55px;
+    background-image: url(../images/arrow_w.png);
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  .autocoffee{
+  
+   margin-bottom: 90px;
+  }
+  .filtercoffee{
+  
+  }
+  .pd-item .btn ul li.other{
+  
+   float: none;
+   margin: 0 auto;  
+  
   }

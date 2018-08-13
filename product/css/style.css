@@ -143,6 +143,20 @@ h1{
   margin-left: 70px;*/
   transition: background-color 0.2s linear;	
 }
+.pd-item .btn ul li::after {
+  position: absolute;
+  content: "";
+  width: 7px;
+  height: 10px;
+  margin: 2px 46px;
+  background-image: url(../images/arrow_w.png);
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+
+
 .pd-item .btn ul li:hover{
 
   background-color: #9f734f;

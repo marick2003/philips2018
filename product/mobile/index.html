@@ -30,7 +30,7 @@
                         <p class="text">盡情享用義式濃縮咖啡、卡布奇諾、拿鐵或瑪奇朵，還可搭配內建奶泡功能現打的新鮮奶泡。並可依您的喜好逐步選擇沖煮方式。</p>
                 </div>
                 <div class="product-list">
-
+                    <pd-item  v-for="(item, index) in auto_array" :item="item" :pdstyle="'auto'" :key="index"></pd-item>
                 </div>
         </div>
         <div class="container center filtercoffee">
@@ -39,15 +39,55 @@
 	    		<p class="text">完美萃取原豆風味，以近乎完美手沖口感為初衷所設計的咖啡機，滿足你挑剔的味蕾。</p>
             </div>
             <div class="product-list">
-
-
+               
+                <pd-item  v-for="(item, index) in filter_array" :item="item" :pdstyle="'filter'" :key="index"></pd-item>
             </div>
         </div>
     </div>
     
 </body>
+
+<script type="text/x-template" id="pd-item">
+	<div class="pd-item">
+		<div class="pic">
+			
+			<img v-bind:src="'./images/' + item.pic" /> 
+		</div>
+		<div class="description">
+			<p>{{ item.name }}</p>
+			<p>{{ item.brand }}</p>
+			<p>{{ item.description }}</p>
+		</div>
+		<div class="btn">
+			<ul>
+				<li v-if="pdstyle == 'auto'"><p><a v-bind:href="item.list_url">詳細規格</a></p></li>
+    		    <li v-bind:class="{ other: pdstyle == 'filter' }"><p><a v-bind:href="item.url">產品特色</a></p></li>
+			</ul>
+		</div>
+	</div>
+</script>
+
 <script>
-    
+    Vue.component('pd-item',{
+	props: ['item','pdstyle'],
+	template:"#pd-item",
+	
+	data: function(){
+		return {
+			data: this.item
+		}
+	},
+	created: function() {
+	
+	},
+	computed:{
+
+	},
+	methods:{
+
+	}
+
+	});
 	var app = new Vue({
 	  el: '.main',
 	  data: {
